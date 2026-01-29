@@ -1,0 +1,36 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+{% block title %}{{ film.titre }}{% endblock %}
+
+{% block content %}
+<div class="film-detail">
+    <h2>{{ film.titre }}</h2>
+    {% if film.affiche %}
+        <img src="{{ film.affiche.url }}" alt="{{ film.titre }}" class="affiche-detail">
+    {% else %}
+        <img src="{% static 'film/default.png' %}" alt="Pas d'affiche">
+    {% endif %}
+    <p><strong>Genre :</strong> {{ film.genre }}</p>
+    <p><strong>Durée :</strong> {{ film.duree_h_min }}</p>
+    <p><strong>Date de sortie :</strong> {{ film.date_sortie }}</p>
+    <p>{{ film.description }}</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'reservation' film.id %}" class="btn">Réserver</a>
+    {% else %}
+        <p>Connectez-vous pour réserver</p>
+    {% endif %}
+    <h2>🎟️ Séances disponibles</h2>
+
+<ul>
+{% for seance in seances %}
+    <li>
+        📅 {{ seance.date }} — ⏰ {{ seance.heure }} — 🏛️ {{ seance.salle }}
+        <a href="{% url 'reservation' seance.id %}">Réserver</a>
+    </li>
+{% empty %}
+    <li>Aucune séance programmée</li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}

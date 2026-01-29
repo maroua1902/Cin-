@@ -1,0 +1,17 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+{% block title %}Confirmation de réservation{% endblock %}
+
+{% block content %}
+<h2>✅ Réservation confirmée</h2>
+
+{% for siege in reservations %}
+<div>
+    <p><strong>Film :</strong> {{ siege.salle.nom }}</p>
+    <p><strong>Siège :</strong> L{{ siege.ligne }}C{{ siege.colonne }}</p>
+</div>
+<hr>
+{% endfor %}
+
+<a href="{% url 'home' %}">🏠 Retour à l'accueil</a>
+{% endblock %}

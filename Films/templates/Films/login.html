@@ -1,0 +1,20 @@
+{% extends 'Films/base.html' %}
+
+{% block title %}Connexion{% endblock %}
+{% load static %}
+
+{% block content %}
+<h2>Se connecter</h2>
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    <label>Nom d’utilisateur :</label>
+    <input type="text" name="username" required>
+    <label>Mot de passe :</label>
+    <input type="password" name="password" required>
+    <button type="submit">Connexion</button>
+</form>
+<p>Pas encore inscrit ? <a href="{% url 'register' %}">Créer un compte</a></p>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'film/styles.css' %}">
+    <title>{% block title %}Cinéma{% endblock %}</title>
+    {% bootstrap_css %}
+{% bootstrap_javascript %}
+
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>🎬 Cinéma</h1>
+    </div>
+    <nav class="user-menu">
+        {% if user.is_authenticated %}
+            <span>Bienvenue, {{ user.username }}</span>
+            <a href="{% url 'mes_reservations' %}" class="btn-small">Mes réservations</a>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button class="logout-btn">Déconnexion</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn-small">Login</a>
+            <a href="{% url 'register' %}" class="btn-small">Register</a>
+        {% endif %}
+    </nav>
+</header>
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        &copy; 2026 Cinéma
+    </footer>
+</body>
+</html>

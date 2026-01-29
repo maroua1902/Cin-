@@ -1,0 +1,21 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<h2>Créer un compte</h2>
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    <label>Nom d’utilisateur :</label>
+    <input type="text" name="username" required>
+    <label>Email :</label>
+    <input type="email" name="email" required>
+    <label>Mot de passe :</label>
+    <input type="password" name="password" required>
+    <button type="submit">S’inscrire</button>
+</form>
+<p>Déjà inscrit ? <a href="{% url 'login' %}">Se connecter</a></p>
+{% endblock %}

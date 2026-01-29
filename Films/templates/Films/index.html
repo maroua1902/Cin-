@@ -1,0 +1,13 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+
+{% block title %}Bienvenue au Cinéma{% endblock %}
+
+{% block content %}
+    <h2>🎬 Bienvenue au Cinéma </h2>
+    <p>Connectez-vous pour voir les films disponibles et vos réservations.</p>
+    <p>
+        <a href="{% url 'login' %}">Se connecter</a> |
+        <a href="{% url 'register' %}">S’inscrire</a>
+    </p>
+{% endblock %}

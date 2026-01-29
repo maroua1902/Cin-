@@ -1,0 +1,312 @@
+/* ==============================
+   Reset et base
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0f0f1e;
+    color: #f5f5f5;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ==============================
+   Header fixe
+============================== */
+header {
+    background: #111;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #ff2e63;
+    letter-spacing: 2px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu span {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.user-menu a,
+.user-menu button {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.user-menu a:hover,
+.user-menu button:hover {
+    color: #08d9d6;
+}
+
+.logout-btn {
+    background: #ff2e63;
+    border: none;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #08d9d6;
+    color: #111;
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+    background: #111;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    color: #888;
+}
+
+/* ==============================
+   Main et Grille de films
+============================== */
+main {
+    padding: 30px 50px;
+}
+
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.film-card {
+    background: #1b1b2f;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.film-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.8);
+}
+
+.film-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff2e63;
+    transition: transform 0.3s ease;
+}
+
+.film-card:hover img {
+    transform: scale(1.05);
+}
+
+.film-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+    color: #ff2e63;
+}
+
+.film-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.film-card a {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 15px;
+    background: #08d9d6;
+    color: #111;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.film-card a:hover {
+    background: #ff2e63;
+    color: #f5f5f5;
+}
+
+/* ==============================
+   Formulaires
+============================== */
+form {
+    background: #1b1b2f;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+form label {
+    display: block;
+    margin: 12px 0 5px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #ff2e63;
+    color: #f5f5f5;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #08d9d6;
+    color: #111;
+}
+
+/* ==============================
+   Titres et textes
+============================== */
+h2 {
+    color: #08d9d6;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+/* ==============================
+   Section Réservations
+============================== */
+ul {
+    margin-top: 10px;
+}
+
+ul li {
+    padding: 6px 0;
+    list-style-type: none;
+    border-bottom: 1px solid #333;
+
+.sieges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px); /* s’adapte automatiquement au nombre de colonnes */
+    gap: 5px;
+    justify-content: start; /* aligne à gauche */
+}
+
+
+.siege {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #333;
+    cursor: pointer;
+    background-color: #08d9d6;
+    border-radius: 5px;
+}
+
+
+.siege.reserve {
+    background-color: #ff2e63; /* rouge vif */
+    color: #fff;
+    cursor: not-allowed;
+}
+
+
+.siege input {
+    display: none;  /* cache la checkbox réelle */
+}
+
+
+ul.reservations li {
+    background: #27293d;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+ul.reservations li button {
+    background: #ff2e63;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 6px;       /* plus petit */
+    font-size: 0.8rem;      /* texte plus petit */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+ul.reservations li button:hover {
+    background: #08d9d6;
+    color: #0d0d1a;
+}
+.user-menu a.btn-small, .logout-btn {
+    padding: 4px 8px;
+    font-size: 0.85rem;   /* petit texte */
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.user-menu a.btn-small {
+    background: #08d9d6;
+    color: #111;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.user-menu a.btn-small:hover {
+    background: #ff2e63;
+    color: #f5f5f5;
+}
+
+.logout-btn {
+    background: #ff2e63;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #08d9d6;
+    color: #111;
+}

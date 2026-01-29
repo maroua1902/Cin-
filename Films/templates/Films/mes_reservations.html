@@ -1,0 +1,34 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+{% block title %}Mes Réservations{% endblock %}
+
+{% block content %}
+<h2>🎫 Mes Réservations</h2>
+
+{% if reservations %}
+    <ul class="reservations">
+    {% for res in reservations %}
+        <li>
+            <div>
+                <strong>Film :</strong> {{ res.seance.film.titre }} <br>
+                <strong>Salle :</strong> {{ res.seance.salle.nom }} <br>
+                <strong>Sièges :</strong>
+                {% for siege in res.sieges.all %}
+                    L{{ siege.ligne }}C{{ siege.colonne }}{% if not forloop.last %}, {% endif %}
+                {% endfor %} <br>
+                <strong>Date séance :</strong> {{ res.seance.date }} — {{ res.seance.heure }} <br>
+                <strong>Date réservation :</strong> {{ res.date_reservation }}
+            </div>
+            <form method="post" action="{% url 'annuler_reservation' res.id %}">
+                {% csrf_token %}
+                <button type="submit">❌ Annuler</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Vous n'avez aucune réservation.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">🏠 Retour à l'accueil</a>
+{% endblock %}

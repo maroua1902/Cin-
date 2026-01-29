@@ -1,0 +1,46 @@
+{% extends 'Films/base.html' %}
+{% load static %}
+
+{% block title %}Accueil Cinéma{% endblock %}
+
+{% block content %}
+
+<h2>🎬 Films disponibles</h2>
+
+<!-- 🔍 Filtre par genre -->
+<form method="get" class="genre-filter">
+    <select name="genre" onchange="this.form.submit()">
+        <option value="">Tous les genres</option>
+        <option value="Action"> {% if genre == 'Action' %}selected{% endif %}>Action</option>
+        <option value="Drame"> {% if genre == 'Drame' %}selected{% endif %}>Drame</option>
+        <option value="Comédie"> {% if genre == 'Comédie' %}selected{% endif %}>Comédie</option>
+        <option value="Horreur"> {% if genre == 'Horreur' %}selected{% endif %}>Horreur</option>
+        <option value="Science-Fiction"> {% if genre == 'Science-Fiction' %}selected{% endif %}>Science-Fiction</option>
+        <option value="Autre"> {% if genre == 'Autre' %}selected{% endif %}Autre</option>
+    </select>
+</form>
+
+
+<!-- 🎞️ Liste des films -->
+<div class="films-grid">
+    {% for film in films %}
+        <div class="film-card">
+            {% if film.affiche %}
+                <img src="{{ film.affiche.url }}" alt="{{ film.titre }}">
+            {% else %}
+                <img src="{% static 'film/default.png' %}" alt="Pas d'affiche">
+            {% endif %}
+
+            <h3>{{ film.titre }}</h3>
+            <p>{{ film.genre }} | {{ film.duree_h_min }}</p>
+
+            <a href="{% url 'film_detail' film.id %}" class="btn">
+                🎥 Voir détails
+            </a>
+        </div>
+    {% empty %}
+        <p>Aucun film disponible pour ce genre.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
