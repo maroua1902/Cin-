@@ -1,6 +1,7 @@
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CinemaProject.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CinémaPEnv.settings")
+
 application = get_wsgi_application()
 app = application
